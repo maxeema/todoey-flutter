@@ -1,21 +1,18 @@
-import 'package:flutter/foundation.dart';
-import 'package:todoey_flutter/models/task.dart';
 import 'dart:collection';
 
+import 'package:flutter/foundation.dart';
+import 'package:todoey_flutter/models/task.dart';
+import 'package:todoey_flutter/models/tasks.dart';
+
 class TaskData extends ChangeNotifier {
-  List<Task> _tasks = [
-    Task(name: 'Buy milk'),
-    Task(name: 'Buy eggs'),
-    Task(name: 'Buy bread'),
-  ];
+
+  final _tasks = data;
 
   UnmodifiableListView<Task> get tasks {
     return UnmodifiableListView(_tasks);
   }
 
-  int get taskCount {
-    return _tasks.length;
-  }
+  int get taskCount => _tasks.length;
 
   void addTask(String newTaskTitle) {
     final task = Task(name: newTaskTitle);
@@ -32,4 +29,5 @@ class TaskData extends ChangeNotifier {
     _tasks.remove(task);
     notifyListeners();
   }
+
 }
